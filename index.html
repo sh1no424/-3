@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Приглашение на свадьбу</title>
 
-  <link rel="stylesheet" href="./css/styles.css" />
+  <link rel="stylesheet" href="./css/styles.css?v=3" />
 </head>
 <body>
   <main class="page">
@@ -110,16 +110,9 @@
           <p class="lead">Мы собрали день так, чтобы было спокойно, красиво и очень живо. Просто приходите и будьте рядом.</p>
 
           <div class="timeline">
+  
             <div class="time-row">
-              <div class="time">11:15</div>
-              <div class="time-text">
-                <h3>Церемония</h3>
-                <p>Роспись в ЗАГСе</p>
-              </div>
-            </div>
-
-            <div class="time-row">
-              <div class="time">15:00</div>
+              <div class="time">16:30</div>
               <div class="time-text">
                 <h3>Праздничный ужин</h3>
                 <p></p>
@@ -193,10 +186,10 @@
           <p class="lead">Пожалуйста, дайте знать, сможете ли вы разделить этот день вместе с нами.</p>
         </div>
 
-        <form class="form">
+        <form class="form" autocomplete="on">
           <div class="form-row">
-            <label for="name">Ваше имя и фамилия (если с парой или с семьей, укажите все имена) *</label>
-            <input id="name" type="text" name="name" placeholder="Введите текст" required />
+            <label for="name">Ваше имя и фамилия (если с парой, укажите все имена) *</label>
+            <input id="name" type="text" name="name" placeholder="Введите текст" autocomplete="name" required />
           </div>
 
           <fieldset class="form-fieldset">
@@ -229,19 +222,29 @@
                 <span>Шампанское</span>
               </label>
               <label class="choice">
-                <input type="checkbox" name="drinks" value="Вино" />
+                <input type="checkbox" name="drinks" value="Красное сухое вино" />
                 <span class="choice-mark" aria-hidden="true"></span>
-                <span>Вино</span>
+                <span>Красное сухое вино</span>
+              </label>
+              <label class="choice">
+                <input type="checkbox" name="drinks" value="Красное полусладкое вино" />
+                <span class="choice-mark" aria-hidden="true"></span>
+                <span>Красное полусладкое вино</span>
+              </label>
+              <label class="choice">
+                <input type="checkbox" name="drinks" value="Белое сухое вино" />
+                <span class="choice-mark" aria-hidden="true"></span>
+                <span>Белое сухое вино</span>
+              </label>
+              <label class="choice">
+                <input type="checkbox" name="drinks" value="Белое полусладкое вино" />
+                <span class="choice-mark" aria-hidden="true"></span>
+                <span>Белое полусладкое вино</span>
               </label>
               <label class="choice">
                 <input type="checkbox" name="drinks" value="Виски" />
                 <span class="choice-mark" aria-hidden="true"></span>
                 <span>Виски</span>
-              </label>
-              <label class="choice">
-                <input type="checkbox" name="drinks" value="Коньяк" />
-                <span class="choice-mark" aria-hidden="true"></span>
-                <span>Коньяк</span>
               </label>
               <label class="choice">
                 <input type="checkbox" name="drinks" value="Водка" />
@@ -256,30 +259,68 @@
             </div>
           </fieldset>
 
-          <fieldset class="form-fieldset">
-            <legend>Вам нужен трансфер?</legend>
-            <div class="choice-list">
-              <label class="choice">
-                <input type="radio" name="transfer" value="Нет" required />
-                <span class="choice-mark" aria-hidden="true"></span>
-                <span>Нет</span>
-              </label>
-              <label class="choice">
-                <input type="radio" name="transfer" value="Только до торжества" />
-                <span class="choice-mark" aria-hidden="true"></span>
-                <span>Только до торжества</span>
-              </label>
-              <label class="choice">
-                <input type="radio" name="transfer" value="Только после торжества" />
-                <span class="choice-mark" aria-hidden="true"></span>
-                <span>Только после торжества</span>
-              </label>
-              <label class="choice">
-                <input type="radio" name="transfer" value="До и после торжества" />
-                <span class="choice-mark" aria-hidden="true"></span>
-                <span>До и после торжества</span>
-              </label>
+          <fieldset class="form-fieldset menu-fieldset">
+            <legend>Меню для гостей:</legend>
+            <div class="menu-guests">
+              <div class="menu-guest" data-menu-guest>
+                <div class="menu-guest-head">
+                  <b>Гость 1</b>
+                  <button class="menu-remove" type="button" hidden>Убрать</button>
+                </div>
+
+                <div class="menu-guest-name">
+                  <label for="guest-name-0">Имя гостя</label>
+                  <input id="guest-name-0" class="menu-guest-name-input" type="text" name="guest_0_name" placeholder="Можно оставить пустым" autocomplete="name" />
+                </div>
+
+                <div class="menu-group">
+                  <div class="menu-group-title">Салат</div>
+                  <div class="choice-list">
+                    <label class="choice">
+                      <input type="radio" name="salad_0" value="Салат с креветками, авокадо и ореховым соусом" data-menu-salad />
+                      <span class="choice-mark" aria-hidden="true"></span>
+                      <span>Салат с креветками, авокадо и ореховым соусом</span>
+                    </label>
+                    <div class="choice-with-note">
+                      <label class="choice">
+                        <input type="radio" name="salad_0" value="Салат «Династия»: Филе цыпленка гриль, отварное филе говядины и отварной язык в сочетании с обжаренными шампиньонами и солеными огурцами под соусом на основе домашнего майонеза и тертого хрена. Сервируется помидорами черри, куриным яйцом с мягким желтком и картофелем Пай." data-menu-salad />
+                        <span class="choice-mark" aria-hidden="true"></span>
+                        <span>Салат «Династия»</span>
+                      </label>
+                      <button class="note-toggle" type="button" aria-expanded="false" aria-controls="dynasty-salad-note-0">?</button>
+                      <p class="choice-note" id="dynasty-salad-note-0" hidden>Филе цыпленка гриль, отварное филе говядины и отварной язык в сочетании с обжаренными шампиньонами и солеными огурцами под соусом на основе домашнего майонеза и тертого хрена. Сервируется помидорами черри, куриным яйцом с мягким желтком и картофелем Пай.</p>
+                    </div>
+                    <label class="choice">
+                      <input type="radio" name="salad_0" value="Салат с запеченным бедром цыпленка, грибами майо и пармезаном" data-menu-salad />
+                      <span class="choice-mark" aria-hidden="true"></span>
+                      <span>Салат с запеченным бедром цыпленка, грибами майо и пармезаном</span>
+                    </label>
+                  </div>
+                </div>
+
+                <div class="menu-group">
+                  <div class="menu-group-title">Горячее блюдо</div>
+                  <div class="choice-list">
+                    <label class="choice">
+                      <input type="radio" name="hot_dish_0" value="Филе форели, запеченное с соусом Шампань" data-menu-hot />
+                      <span class="choice-mark" aria-hidden="true"></span>
+                      <span>Филе форели, запеченное с соусом Шампань</span>
+                    </label>
+                    <label class="choice">
+                      <input type="radio" name="hot_dish_0" value="Говядина, томленая с Демигласом" data-menu-hot />
+                      <span class="choice-mark" aria-hidden="true"></span>
+                      <span>Говядина, томленая с Демигласом</span>
+                    </label>
+                    <label class="choice">
+                      <input type="radio" name="hot_dish_0" value="Свинина на гриле с соусом пронто чили" data-menu-hot />
+                      <span class="choice-mark" aria-hidden="true"></span>
+                      <span>Свинина на гриле с соусом пронто чили</span>
+                    </label>
+                  </div>
+                </div>
+              </div>
             </div>
+            <button class="menu-add" type="button">Добавить гостя</button>
           </fieldset>
 
           <button class="submit" type="submit">Отправить</button>
@@ -295,6 +336,6 @@
 
   <div class="toast" id="toast">Спасибо! Ответ отправлен ♡</div>
 
-  <script src="./js/main.js"></script>
+  <script src="./js/main.js?v=5"></script>
 </body>
 </html>
