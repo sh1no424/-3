@@ -1073,11 +1073,12 @@
     }
 
     .toast {
+      --toast-bottom: calc(24px + env(safe-area-inset-bottom));
       position: fixed;
       left: 50%;
-      bottom: calc(24px + env(safe-area-inset-bottom));
+      bottom: var(--toast-bottom);
       z-index: 50;
-      transform: translate(-50%, 110px);
+      transform: translate(-50%, calc(100% + var(--toast-bottom) + 24px));
       padding: 14px 18px;
       background: rgba(255, 250, 242, .88);
       backdrop-filter: blur(14px);
@@ -1085,11 +1086,17 @@
       color: var(--red);
       font-size: 14px;
       font-weight: 800;
-      transition: transform .35s ease;
+      opacity: 0;
+      pointer-events: none;
+      visibility: hidden;
+      transition: transform .35s ease, opacity .2s ease, visibility 0s linear .35s;
     }
 
     .toast.show {
+      opacity: 1;
       transform: translate(-50%, 0);
+      visibility: visible;
+      transition: transform .35s ease, opacity .2s ease, visibility 0s;
     }
 
     .reveal {
@@ -1327,7 +1334,7 @@
       }
 
       .toast {
-        bottom: calc(92px + env(safe-area-inset-bottom));
+        --toast-bottom: calc(92px + env(safe-area-inset-bottom));
         width: calc(100% - 32px);
         max-width: 420px;
         text-align: center;
