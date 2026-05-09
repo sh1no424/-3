@@ -1074,11 +1074,12 @@
 
     .toast {
       --toast-bottom: calc(24px + env(safe-area-inset-bottom));
+      display: none;
       position: fixed;
       left: 50%;
       bottom: var(--toast-bottom);
       z-index: 50;
-      transform: translate(-50%, calc(100% + var(--toast-bottom) + 24px));
+      transform: translate(-50%, 0);
       padding: 14px 18px;
       background: rgba(255, 250, 242, .88);
       backdrop-filter: blur(14px);
@@ -1088,15 +1089,23 @@
       font-weight: 800;
       opacity: 0;
       pointer-events: none;
-      visibility: hidden;
-      transition: transform .35s ease, opacity .2s ease, visibility 0s linear .35s;
     }
 
     .toast.show {
+      display: block;
       opacity: 1;
-      transform: translate(-50%, 0);
-      visibility: visible;
-      transition: transform .35s ease, opacity .2s ease, visibility 0s;
+      animation: toast-in .35s ease;
+    }
+
+    @keyframes toast-in {
+      from {
+        opacity: 0;
+        transform: translate(-50%, 18px);
+      }
+      to {
+        opacity: 1;
+        transform: translate(-50%, 0);
+      }
     }
 
     .reveal {
